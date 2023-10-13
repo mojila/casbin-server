@@ -17,6 +17,7 @@ type IRepository interface {
 	RemoveNamedPolicy(ctx context.Context, ptype string, rule []string) (bool, error)
 	AddNamedPolicy(ctx context.Context, ptype string, rule []string) (bool, error)
 	Enforce(ctx context.Context, rule []string) (bool, error)
+	BatchEnforce(ctx context.Context, rules [][]string) ([]bool, error)
 }
 
 func NewRepository(tracer trace.Tracer, db *gorm.DB) *Repository {
@@ -44,4 +45,9 @@ func (r *Repository) AddNamedPolicy(ctx context.Context, ptype string, rules [][
 // TODO: implement method Enforce in repository directly query to db
 func (r *Repository) Enforce(ctx context.Context, rules [][]string) (bool, error) {
 	return false, nil
+}
+
+// TODO: implement method BatchEnforce in repository directly query to db
+func (r *Repository) BatchEnforce(ctx context.Context, rules [][]string) ([]bool, error) {
+	return nil, nil
 }

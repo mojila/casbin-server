@@ -216,6 +216,10 @@ func (s *Server) Enforce(ctx context.Context, in *pb.EnforceRequest) (*pb.BoolRe
 	return &pb.BoolReply{Res: res}, nil
 }
 
+// TODO: add BatchEnforce
+// func (s *Server) BatchEnforce(ctx context.Context, in *pb.BatchEnforceRequest) (*pb.BoolListReply, error) {
+// }
+
 func (s *Server) LoadPolicy(ctx context.Context, in *pb.EmptyRequest) (*pb.EmptyReply, error) {
 	e, err := s.getEnforcer(int(in.Handler))
 	if err != nil {
